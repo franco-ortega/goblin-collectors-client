@@ -1,6 +1,7 @@
 import styles from './Goblin.module.css';
 
 const Goblin = ({ id, name, strength, storage }) => {
+  console.log(name);
   return (
     <div className={styles.Goblin}>
       <h3>

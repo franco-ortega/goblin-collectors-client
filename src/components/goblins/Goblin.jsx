@@ -1,8 +1,8 @@
-import React from 'react';
+import styles from './Goblin.module.css';
 
 const Goblin = ({ id, name, strength, storage }) => {
   return (
-    <div>
+    <div className={styles.Goblin}>
       <h3>
         Goblin #{id}: {name}
       </h3>

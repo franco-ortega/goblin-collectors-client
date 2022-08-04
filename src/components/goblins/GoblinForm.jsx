@@ -1,12 +1,23 @@
 import { useState } from 'react';
+import { postGoblin } from '../../services/request';
 
 const GoblinForm = () => {
   const [name, setName] = useState('');
   const [strength, setStrength] = useState('');
   const [storage, setStorage] = useState('');
 
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+
+    postGoblin({
+      goblinName: name,
+      strength,
+      storage
+    }).then((res) => console.log(res.json()));
+  };
+
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <label htmlFor='name'>
         Name:
         <input

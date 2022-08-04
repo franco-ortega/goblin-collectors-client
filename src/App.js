@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import GoblinForm from './components/goblins/GoblinForm';
 import GoblinList from './components/goblins/GoblinList';
 import Header from './components/header/Header';
+import Loading from './components/loading/Loading';
 import { getGoblins } from './services/request';
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
       <main>
         <GoblinForm goblins={goblins} setGoblins={setGoblins} />
         {loading ? (
-          'Loading'
+          <Loading />
         ) : goblins.length ? (
           <GoblinList goblins={goblins} />
         ) : (

@@ -5,16 +5,16 @@ export const getGoblins = async () => {
 };
 
 export const postGoblin = async (data) => {
-  return await fetch(REACT_APP_API_URL, {
-    method: 'POST',
+  await fetch(REACT_APP_API_URL, {
     // mode: 'cors',
     // cache: 'no-cache',
     // credentials: 'include',
+    // redirect: 'follow',
+    // referrerPolicy: 'no-referrer',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    // redirect: 'follow',
-    // referrerPolicy: 'no-referrer',
     body: JSON.stringify(data)
   }).then((res) => res.json);
 };

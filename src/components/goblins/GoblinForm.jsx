@@ -13,7 +13,7 @@ const GoblinForm = ({ setGoblins }) => {
       goblinName: name,
       strength,
       storage
-    }).then((res) => getGoblins().then((res) => setGoblins(res)));
+    }).then(() => getGoblins().then((res) => setGoblins(res)));
 
     setName('');
     setStrength('');

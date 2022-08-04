@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { getGoblins, postGoblin } from '../../services/request';
+import { deleteGoblin, getGoblins, postGoblin } from '../../services/request';
 
-const GoblinForm = ({ setGoblins }) => {
+const GoblinForm = ({ goblins, setGoblins }) => {
   const [name, setName] = useState('');
   const [strength, setStrength] = useState('');
   const [storage, setStorage] = useState('');
+
+  const [goblinToDelete, setGoblinToDelete] = useState('');
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -20,68 +22,92 @@ const GoblinForm = ({ setGoblins }) => {
     setStorage('small');
   };
 
+  const onDeleteGoblin = (e) => {
+    e.preventDefault();
+    deleteGoblin(goblinToDelete).then(() =>
+      getGoblins().then((res) => setGoblins(res))
+    );
+  };
+
+  console.log(goblinToDelete);
+
   return (
-    <form onSubmit={onFormSubmit}>
-      <h2>Create a Goblin</h2>
-      <label htmlFor='name'>
-        Name:
-        <input
-          type='text'
-          id='name'
-          name='name'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <label htmlFor='strength'>
-        Strength:
-        <select
-          id='strength'
-          name='strength'
-          value={strength}
-          onChange={(e) => setStrength(e.target.value)}
-        >
-          <option value=''>Pick Your Strength</option>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
+    <>
+      <form onSubmit={onFormSubmit}>
+        <h2>Create a Goblin</h2>
+        <label htmlFor='name'>
+          Name:
+          <input
+            type='text'
+            id='name'
+            name='name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label htmlFor='strength'>
+          Strength:
+          <select
+            id='strength'
+            name='strength'
+            value={strength}
+            onChange={(e) => setStrength(e.target.value)}
+          >
+            <option value=''>Pick Your Strength</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+          </select>
+        </label>
+        Storage:
+        <label htmlFor='small'>
+          Small
+          <input
+            type='radio'
+            id='storage'
+            name='storage'
+            value='small'
+            onChange={(e) => setStorage(e.target.value)}
+          />
+        </label>
+        <label htmlFor='medium'>
+          Medium
+          <input
+            type='radio'
+            id='storage'
+            name='storage'
+            value='medium'
+            onChange={(e) => setStorage(e.target.value)}
+          />
+        </label>
+        <label htmlFor='large'>
+          Large
+          <input
+            type='radio'
+            id='storage'
+            name='storage'
+            value='large'
+            onChange={(e) => setStorage(e.target.value)}
+          />
+        </label>
+        <button>Submit</button>
+      </form>
+
+      <section>
+        <h2>Delete a Goblin</h2>
+        <select onChange={(e) => setGoblinToDelete(e.target.value)}>
+          <option value='default'>Pick a Goblin</option>
+          {goblins.map((goblin) => (
+            <option key={goblin.goblinId} value={goblin.goblinId}>
+              {goblin.goblinId}: {goblin.goblinName}
+            </option>
+          ))}
         </select>
-      </label>
-      Storage:
-      <label htmlFor='small'>
-        Small
-        <input
-          type='radio'
-          id='storage'
-          name='storage'
-          value='small'
-          onChange={(e) => setStorage(e.target.value)}
-        />
-      </label>
-      <label htmlFor='medium'>
-        Medium
-        <input
-          type='radio'
-          id='storage'
-          name='storage'
-          value='medium'
-          onChange={(e) => setStorage(e.target.value)}
-        />
-      </label>
-      <label htmlFor='large'>
-        Large
-        <input
-          type='radio'
-          id='storage'
-          name='storage'
-          value='large'
-          onChange={(e) => setStorage(e.target.value)}
-        />
-      </label>
-      <button>Submit</button>
-    </form>
+        <button onClick={onDeleteGoblin}>Delete Goblin</button>
+      </section>
+    </>
   );
 };
 

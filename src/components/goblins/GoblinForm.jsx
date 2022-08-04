@@ -17,7 +17,7 @@ const GoblinForm = () => {
 
     setName('');
     setStrength('');
-    setStorage('');
+    setStorage('small');
   };
 
   return (

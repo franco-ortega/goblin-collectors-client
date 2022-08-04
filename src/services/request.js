@@ -8,13 +8,13 @@ export const postGoblin = async (data) => {
   await fetch(REACT_APP_API_URL, {
     method: 'POST',
     mode: 'cors',
-    cache: 'no-cache',
+    // cache: 'no-cache',
     // credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
+    // redirect: 'follow',
+    // referrerPolicy: 'no-referrer',
     body: JSON.stringify(data)
   }).then((res) => res.json);
 };

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { deleteGoblin, getGoblins, postGoblin } from '../../services/request';
+import styles from './GoblinForm.module.css';
 
 const GoblinForm = ({ goblins, setGoblins }) => {
   const [name, setName] = useState('');
@@ -32,7 +33,7 @@ const GoblinForm = ({ goblins, setGoblins }) => {
   console.log(goblinToDelete);
 
   return (
-    <>
+    <section className={styles.GoblinForm}>
       <form onSubmit={onFormSubmit}>
         <h2>Create a Goblin</h2>
         <label htmlFor='name'>
@@ -61,9 +62,8 @@ const GoblinForm = ({ goblins, setGoblins }) => {
             <option value='5'>5</option>
           </select>
         </label>
-        Storage:
-        <label htmlFor='small'>
-          Small
+        <fieldset>
+          <legend>Storage</legend>
           <input
             type='radio'
             id='storage'
@@ -71,9 +71,7 @@ const GoblinForm = ({ goblins, setGoblins }) => {
             value='small'
             onChange={(e) => setStorage(e.target.value)}
           />
-        </label>
-        <label htmlFor='medium'>
-          Medium
+          <label htmlFor='small'>Small</label>
           <input
             type='radio'
             id='storage'
@@ -81,9 +79,7 @@ const GoblinForm = ({ goblins, setGoblins }) => {
             value='medium'
             onChange={(e) => setStorage(e.target.value)}
           />
-        </label>
-        <label htmlFor='large'>
-          Large
+          <label htmlFor='medium'>Medium</label>
           <input
             type='radio'
             id='storage'
@@ -91,7 +87,8 @@ const GoblinForm = ({ goblins, setGoblins }) => {
             value='large'
             onChange={(e) => setStorage(e.target.value)}
           />
-        </label>
+          <label htmlFor='large'>Large</label>
+        </fieldset>
         <button>Submit</button>
       </form>
 
@@ -107,7 +104,7 @@ const GoblinForm = ({ goblins, setGoblins }) => {
         </select>
         <button onClick={onDeleteGoblin}>Delete Goblin</button>
       </section>
-    </>
+    </section>
   );
 };
 

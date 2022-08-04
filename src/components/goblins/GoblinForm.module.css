@@ -1,0 +1,28 @@
+.GoblinForm {
+  background-color: aqua;
+  padding: 0.5rem;
+}
+
+.GoblinForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.GoblinForm form fieldset {
+  border: none;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.GoblinForm form fieldset legend {
+  text-decoration: underline;
+}
+
+.GoblinForm button {
+  background-color: hsl(43, 52%, 33%);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  color: hsl(72, 100%, 60%);
+}

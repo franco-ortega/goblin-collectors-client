@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { postGoblin } from '../../services/request';
+import { getGoblins, postGoblin } from '../../services/request';
 
 const GoblinForm = ({ setGoblins }) => {
   const [name, setName] = useState('');
@@ -13,7 +13,7 @@ const GoblinForm = ({ setGoblins }) => {
       goblinName: name,
       strength,
       storage
-    }).then((res) => setGoblins(res));
+    }).then((res) => getGoblins().then((res) => setGoblins(res)));
 
     setName('');
     setStrength('');

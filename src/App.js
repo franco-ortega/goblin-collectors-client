@@ -3,8 +3,8 @@ import Goblin from './components/goblins/Goblin';
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
-  // const URL = 'http://localhost:4200/api/v1/goblins';
-  const URL = 'https://goblin-collectors-server.herokuapp.com/api/v1/goblins';
+  // const URL = process.env.REACT_APP_LOCALHOST_URL;
+  const URL = process.env.REACT_APP_DATABASE_URL;
 
   useEffect(() => {
     fetch(URL)

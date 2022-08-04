@@ -4,7 +4,7 @@ const Goblin = ({ id, name, strength, storage }) => {
   return (
     <div className={styles.Goblin}>
       <h3>
-        Goblin #{id}: {name}
+        #{id}: {name}
       </h3>
       <p>Strength: {strength}</p>
       <p>Storage: {storage}</p>

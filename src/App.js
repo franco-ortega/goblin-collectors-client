@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Goblin from './components/goblins/Goblin';
 import GoblinForm from './components/goblins/GoblinForm';
+import GoblinList from './components/goblins/GoblinList';
 import Header from './components/header/Header';
 import { deleteGoblin, getGoblins } from './services/request';
 
@@ -44,20 +45,7 @@ const App = () => {
           </select>
           <button onClick={onDeleteGoblin}>Delete Goblin</button>
         </section>
-        <ul>
-          {loading
-            ? 'Loading'
-            : goblins.map((goblin) => (
-                <li key={goblin.goblinId}>
-                  <Goblin
-                    id={goblin.goblinId}
-                    name={goblin.goblinName}
-                    strength={goblin.strength}
-                    storage={goblin.storage}
-                  />
-                </li>
-              ))}
-        </ul>
+        <ul>{loading ? 'Loading' : <GoblinList goblins={goblins} />}</ul>
       </main>
     </>
   );

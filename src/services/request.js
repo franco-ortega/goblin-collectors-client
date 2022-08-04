@@ -17,6 +17,8 @@ export const postGoblin = async (data) => {
     // referrerPolicy: 'no-referrer',
     body: JSON.stringify(data)
   }).then((res) => res.json);
+
+  return getGoblins();
 };
 
 // const WITHOUT_BODY_METHODS = ['GET', 'DELETE'];

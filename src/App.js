@@ -22,7 +22,7 @@ const App = () => {
         <h1>Goblin Collectors</h1>
       </header>
       <main>
-        <GoblinForm />
+        <GoblinForm setGoblins={setGoblins} />
         <ul>
           {loading
             ? 'Loading'

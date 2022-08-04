@@ -4,6 +4,21 @@ export const getGoblins = async () => {
   await fetch(REACT_APP_API_URL).then((res) => res.json());
 };
 
+export const postGoblin = async (data) => {
+  await fetch(REACT_APP_API_URL, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(data)
+  }).then((res) => res.json);
+};
+
 // const WITHOUT_BODY_METHODS = ['GET', 'DELETE'];
 
 // const request = (path, method, body) => {

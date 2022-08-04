@@ -21,6 +21,7 @@ const GoblinForm = () => {
         <input type='radio' id='storage' name='storage' value='medium' />
         <input type='radio' id='storage' name='storage' value='large' />
       </label>
+      <button>Submit</button>
     </form>
   );
 };

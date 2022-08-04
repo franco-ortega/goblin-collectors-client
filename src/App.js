@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Goblin from './components/goblins/Goblin';
 import GoblinForm from './components/goblins/GoblinForm';
+import Header from './components/header/Header';
 import { deleteGoblin, getGoblins } from './services/request';
 
 const App = () => {
@@ -28,9 +29,7 @@ const App = () => {
 
   return (
     <>
-      <header>
-        <h1>Goblin Collectors</h1>
-      </header>
+      <Header />
       <main>
         <GoblinForm setGoblins={setGoblins} />
         <section>

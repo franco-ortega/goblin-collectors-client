@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import Goblin from './components/goblins/Goblin';
-const { REACT_APP_API_URL } = process.env;
+import { getGoblins } from './services/request';
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
 
   useEffect(() => {
-    fetch(REACT_APP_API_URL)
-      .then((res) => res.json())
-      .then((response) => setGoblins(response));
+    getGoblins().then((res) => setGoblins(res));
   }, []);
 
   console.log(goblins);
@@ -20,16 +18,18 @@ const App = () => {
       </header>
       <main>
         <ul>
-          {goblins.map((goblin) => (
-            <li key={goblin.goblinId}>
-              <Goblin
-                id={goblin.goblinId}
-                name={goblin.goblinName}
-                strength={goblin.strength}
-                storage={goblin.storage}
-              />
-            </li>
-          ))}
+          {goblins.length
+            ? goblins.map((goblin) => (
+                <li key={goblin.goblinId}>
+                  <Goblin
+                    id={goblin.goblinId}
+                    name={goblin.goblinName}
+                    strength={goblin.strength}
+                    storage={goblin.storage}
+                  />
+                </li>
+              ))
+            : 'There are no goblins. So sad. :('}
         </ul>
       </main>
     </>

@@ -1,7 +1,7 @@
 const { REACT_APP_API_URL } = process.env;
 
 export const getGoblins = async () => {
-  await fetch(REACT_APP_API_URL).then((res) => res.json());
+  return await fetch(REACT_APP_API_URL).then((res) => res.json());
 };
 
 export const postGoblin = async (data) => {
@@ -9,7 +9,7 @@ export const postGoblin = async (data) => {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
-    credentials: 'include',
+    // credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },

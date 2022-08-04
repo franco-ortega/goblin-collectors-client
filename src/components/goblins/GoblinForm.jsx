@@ -13,7 +13,11 @@ const GoblinForm = () => {
       goblinName: name,
       strength,
       storage
-    }).then((res) => console.log(res.json()));
+    });
+
+    setName('');
+    setStrength('');
+    setStorage('');
   };
 
   return (
@@ -24,6 +28,7 @@ const GoblinForm = () => {
           type='text'
           id='name'
           name='name'
+          value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </label>
@@ -32,8 +37,10 @@ const GoblinForm = () => {
         <select
           id='strength'
           name='strength'
+          value={strength}
           onChange={(e) => setStrength(e.target.value)}
         >
+          <option value=''>Pick Your Strength</option>
           <option value='1'>1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
@@ -41,8 +48,9 @@ const GoblinForm = () => {
           <option value='5'>5</option>
         </select>
       </label>
-      <label htmlFor='storage'>
-        Storage:
+      Storage:
+      <label htmlFor='small'>
+        Small
         <input
           type='radio'
           id='storage'
@@ -50,6 +58,9 @@ const GoblinForm = () => {
           value='small'
           onChange={(e) => setStorage(e.target.value)}
         />
+      </label>
+      <label htmlFor='medium'>
+        Medium
         <input
           type='radio'
           id='storage'
@@ -57,6 +68,9 @@ const GoblinForm = () => {
           value='medium'
           onChange={(e) => setStorage(e.target.value)}
         />
+      </label>
+      <label htmlFor='large'>
+        Large
         <input
           type='radio'
           id='storage'

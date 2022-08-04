@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
 import Goblin from './components/goblins/Goblin';
+import GoblinForm from './components/goblins/GoblinForm';
 import { getGoblins } from './services/request';
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getGoblins().then((res) => setGoblins(res));
+    getGoblins().then((res) => {
+      setGoblins(res);
+      setLoading(false);
+    });
   }, []);
 
   console.log(goblins);
@@ -17,9 +22,11 @@ const App = () => {
         <h1>Goblin Collectors</h1>
       </header>
       <main>
+        <GoblinForm />
         <ul>
-          {goblins.length
-            ? goblins.map((goblin) => (
+          {loading
+            ? 'Loading'
+            : goblins.map((goblin) => (
                 <li key={goblin.goblinId}>
                   <Goblin
                     id={goblin.goblinId}
@@ -28,8 +35,7 @@ const App = () => {
                     storage={goblin.storage}
                   />
                 </li>
-              ))
-            : 'There are no goblins. So sad. :('}
+              ))}
         </ul>
       </main>
     </>

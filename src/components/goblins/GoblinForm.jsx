@@ -34,10 +34,10 @@ const GoblinForm = ({ goblins, setGoblins }) => {
 
   return (
     <section className={styles.GoblinForm}>
-      <form onSubmit={onFormSubmit}>
+      <form onSubmit={onFormSubmit} id='create'>
         <h2>Create a Goblin</h2>
         <label htmlFor='name'>
-          Name:
+          Name:{' '}
           <input
             type='text'
             id='name'
@@ -47,7 +47,7 @@ const GoblinForm = ({ goblins, setGoblins }) => {
           />
         </label>
         <label htmlFor='strength'>
-          Strength:
+          Strength:{' '}
           <select
             id='strength'
             name='strength'
@@ -62,7 +62,7 @@ const GoblinForm = ({ goblins, setGoblins }) => {
             <option value='5'>5</option>
           </select>
         </label>
-        <fieldset>
+        <fieldset form='goblin'>
           <legend>Storage</legend>
           <input
             type='radio'
@@ -89,10 +89,10 @@ const GoblinForm = ({ goblins, setGoblins }) => {
           />
           <label htmlFor='large'>Large</label>
         </fieldset>
-        <button>Submit</button>
+        <button>Create Goblin</button>
       </form>
-
-      <section>
+      <hr />
+      <form id='delete'>
         <h2>Delete a Goblin</h2>
         <select onChange={(e) => setGoblinToDelete(e.target.value)}>
           <option value='default'>Pick a Goblin</option>
@@ -103,7 +103,7 @@ const GoblinForm = ({ goblins, setGoblins }) => {
           ))}
         </select>
         <button onClick={onDeleteGoblin}>Delete Goblin</button>
-      </section>
+      </form>
     </section>
   );
 };

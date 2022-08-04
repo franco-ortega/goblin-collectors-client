@@ -1,6 +1,15 @@
 .GoblinForm {
-  background-color: aqua;
+  background-color: hsl(180, 80%, 75%);
+  border-radius: 0.25rem;
+  margin-block: 1rem;
   padding: 0.5rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.GoblinForm h2 {
+  font-size: 1rem;
 }
 
 .GoblinForm form {
@@ -25,4 +34,8 @@
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
   color: hsl(72, 100%, 60%);
+}
+
+.GoblinForm hr {
+  border-color: hsl(0, 0%, 0%);
 }

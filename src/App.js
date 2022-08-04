@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Goblin from './components/goblins/Goblin';
-const { REACT_APP_DATABASE_URL } = process.env;
+const { REACT_APP_API_URL } = process.env;
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
 
   useEffect(() => {
-    fetch(REACT_APP_DATABASE_URL)
+    fetch(REACT_APP_API_URL)
       .then((res) => res.json())
       .then((response) => setGoblins(response));
   }, []);

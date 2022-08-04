@@ -19,6 +19,16 @@ export const postGoblin = async (data) => {
   }).then((res) => res.json);
 };
 
+export const deleteGoblin = async (id) => {
+  return await fetch(`${REACT_APP_API_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    // body: JSON.stringify({ goblinId: id })
+  }).then((res) => res.json);
+};
+
 // const WITHOUT_BODY_METHODS = ['GET', 'DELETE'];
 
 // const request = (path, method, body) => {

@@ -22,6 +22,7 @@ const GoblinForm = ({ setGoblins }) => {
 
   return (
     <form onSubmit={onFormSubmit}>
+      <h2>Create a Goblin</h2>
       <label htmlFor='name'>
         Name:
         <input

@@ -1,20 +1,30 @@
 import { useEffect, useState } from 'react';
 import Goblin from './components/goblins/Goblin';
 import GoblinForm from './components/goblins/GoblinForm';
-import { getGoblins } from './services/request';
+import { deleteGoblin, getGoblins } from './services/request';
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [goblinToDelete, setGoblinToDelete] = useState('');
 
   useEffect(() => {
     getGoblins().then((res) => {
       setGoblins(res);
       setLoading(false);
     });
-  }, []);
+  }, [goblinToDelete]);
 
-  console.log(goblins);
+  // console.log(goblins);
+
+  const onDeleteGoblin = (e) => {
+    e.preventDefault();
+    deleteGoblin(goblinToDelete).then(() =>
+      getGoblins().then((res) => setGoblins(res))
+    );
+  };
+
+  console.log(goblinToDelete);
 
   return (
     <>
@@ -23,6 +33,18 @@ const App = () => {
       </header>
       <main>
         <GoblinForm setGoblins={setGoblins} />
+        <section>
+          <h2>Delete a Goblin</h2>
+          <select onChange={(e) => setGoblinToDelete(e.target.value)}>
+            <option value='default'>Pick a Goblin</option>
+            {goblins.map((goblin) => (
+              <option key={goblin.goblinId} value={goblin.goblinId}>
+                {goblin.goblinId}: {goblin.goblinName}
+              </option>
+            ))}
+          </select>
+          <button onClick={onDeleteGoblin}>Delete Goblin</button>
+        </section>
         <ul>
           {loading
             ? 'Loading'

@@ -96,9 +96,9 @@ const GoblinForm = ({ goblins, setGoblins }) => {
         <h2>Delete a Goblin</h2>
         <select onChange={(e) => setGoblinToDelete(e.target.value)}>
           <option value='default'>Pick a Goblin</option>
-          {goblins.map((goblin) => (
+          {goblins.map((goblin, i) => (
             <option key={goblin.goblinId} value={goblin.goblinId}>
-              {goblin.goblinId}: {goblin.goblinName}
+              {i + 1}: {goblin.goblinName}
             </option>
           ))}
         </select>

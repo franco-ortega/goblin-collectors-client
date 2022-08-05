@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { createGoblin, deleteGoblin, getGoblins } from '../services/request';
+import {
+  createGoblin,
+  deleteGoblin,
+  getGoblins,
+  updateGoblin
+} from '../services/request';
 
 export const useFetch = (setState) => {
   const [loading, setLoading] = useState(false);
@@ -18,6 +23,12 @@ export const useFetch = (setState) => {
     });
   };
 
+  const editGoblin = async (data, id) => {
+    await updateGoblin(data, id).then(() => {
+      getGoblins().then((res) => setState(res));
+    });
+  };
+
   const removeGoblin = (id, setDelete) => {
     deleteGoblin(id).then((response) => {
       setDelete(response);
@@ -29,6 +40,7 @@ export const useFetch = (setState) => {
     loading,
     setLoading,
     addGoblin,
+    editGoblin,
     removeGoblin
   };
 };

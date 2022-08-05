@@ -12,7 +12,6 @@ const Goblin = ({
   setGoblins
 }) => {
   const [update, setUpdate] = useState(false);
-
   const [updating, setUpdating] = useState(false);
 
   const onGoblinClick = () => {

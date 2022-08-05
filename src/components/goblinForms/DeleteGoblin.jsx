@@ -4,16 +4,23 @@ import styles from './DeleteGoblin.module.css';
 
 const DeleteGoblin = ({ goblins, setGoblins }) => {
   const [goblinToDelete, setGoblinToDelete] = useState('');
+  const [deletedGoblin, setDeletedGoblin] = useState(null);
 
-  const onDeleteGoblin = (e) => {
+  const onDeleteGoblinSubmit = (e) => {
     e.preventDefault();
-    deleteGoblin(goblinToDelete).then(() =>
-      getGoblins().then((res) => setGoblins(res))
-    );
+    deleteGoblin(goblinToDelete).then((response) => {
+      console.log('RESPONSE: ', response);
+      setDeletedGoblin(response);
+      getGoblins().then((res) => setGoblins(res));
+    });
   };
 
   return (
-    <form className={styles.DeleteGoblin} id='delete'>
+    <form
+      className={styles.DeleteGoblin}
+      id='delete'
+      onSubmit={onDeleteGoblinSubmit}
+    >
       <h2>Delete a Goblin</h2>
       <select onChange={(e) => setGoblinToDelete(e.target.value)}>
         <option value='default'>Pick a Goblin</option>
@@ -23,7 +30,9 @@ const DeleteGoblin = ({ goblins, setGoblins }) => {
           </option>
         ))}
       </select>
-      <button onClick={onDeleteGoblin}>Delete Goblin</button>
+      <button>Delete Goblin</button>
+
+      {deletedGoblin && <p>{deletedGoblin.goblinName} was deleted.</p>}
     </form>
   );
 };

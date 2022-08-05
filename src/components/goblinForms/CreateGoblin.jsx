@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getGoblins, postGoblin } from '../../services/request';
+import { getGoblins, createGoblin } from '../../services/request';
 import styles from './CreateGoblin.module.css';
 
 const CreateGoblin = ({ setGoblins }) => {
@@ -7,10 +7,10 @@ const CreateGoblin = ({ setGoblins }) => {
   const [strength, setStrength] = useState('');
   const [storage, setStorage] = useState('');
 
-  const onFormSubmit = (e) => {
+  const onCreateGoblinSubmit = (e) => {
     e.preventDefault();
 
-    postGoblin({
+    createGoblin({
       goblinName: name,
       strength,
       storage
@@ -22,7 +22,11 @@ const CreateGoblin = ({ setGoblins }) => {
   };
 
   return (
-    <form className={styles.CreateGoblin} onSubmit={onFormSubmit} id='create'>
+    <form
+      className={styles.CreateGoblin}
+      onSubmit={onCreateGoblinSubmit}
+      id='create'
+    >
       <h2>Create a Goblin</h2>
       <label htmlFor='name'>
         Name:{' '}

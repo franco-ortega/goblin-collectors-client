@@ -6,13 +6,8 @@ export const getGoblins = async () => {
     .then((res) => res.sort((a, b) => a.goblinId - b.goblinId));
 };
 
-export const postGoblin = async (data) => {
+export const createGoblin = async (data) => {
   await fetch(REACT_APP_API_URL, {
-    // mode: 'cors',
-    // cache: 'no-cache',
-    // credentials: 'include',
-    // redirect: 'follow',
-    // referrerPolicy: 'no-referrer',
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -37,9 +32,43 @@ export const deleteGoblin = async (id) => {
     headers: {
       'Content-Type': 'application/json'
     }
-    // body: JSON.stringify({ goblinId: id })
   }).then((res) => res.json);
 };
+
+const WITHOUT_BODY_METHODS = ['GET', 'DELETE'];
+
+const goblinRequest = async (method, data, id = '') => {
+  console.log('making a request');
+  console.log('ID: ', id);
+
+  const headers = WITHOUT_BODY_METHODS.includes(method)
+    ? {}
+    : {
+        'Content-Type': 'application/json'
+      };
+
+  const response = await fetch(`${REACT_APP_API_URL}/${id}`, {
+    method,
+    headers,
+    body: JSON.stringify(data)
+  })
+    .then((res) => Promise.all([res.ok, res.json()]))
+    .then(([ok, json]) => {
+      if (!ok) throw json;
+      return json;
+    });
+
+  console.log(response);
+
+  if (method === 'GET') response.sort((a, b) => a.goblinId - b.goblinId);
+
+  return response;
+};
+
+export const getGoblins2 = () => goblinRequest('GET');
+export const createGoblin2 = (data) => goblinRequest('POST', data);
+export const updateGoblin2 = (data, id) => goblinRequest('PUT', data, id);
+export const deleteGoblin2 = (id) => goblinRequest('DELETE', null, id);
 
 // const WITHOUT_BODY_METHODS = ['GET', 'DELETE'];
 

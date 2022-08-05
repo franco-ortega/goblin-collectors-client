@@ -1,0 +1,19 @@
+.GoblinList {
+  border: 0.25rem solid hsl(51, 74%, 76%);
+  border-radius: 0.25rem;
+  width: 90%;
+  max-width: fit-content;
+  margin: auto;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 500px) {
+  .GoblinList {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

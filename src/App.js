@@ -1,40 +1,36 @@
 import { useEffect, useState } from 'react';
-import Goblin from './components/goblins/Goblin';
+import GoblinForms from './components/goblinForms/GoblinForms';
+import GoblinList from './components/goblins/GoblinList';
+import Header from './components/header/Header';
+import Loading from './components/loading/Loading';
 import { getGoblins } from './services/request';
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getGoblins().then((res) => setGoblins(res));
+    getGoblins().then((res) => {
+      setGoblins(res);
+      setLoading(false);
+    });
   }, []);
-
-  console.log(goblins);
 
   return (
     <>
-      <header>
-        <h1>Goblin Collectors</h1>
-      </header>
+      <Header />
       <main>
-        <ul>
-          {goblins.length
-            ? goblins.map((goblin) => (
-                <li key={goblin.goblinId}>
-                  <Goblin
-                    id={goblin.goblinId}
-                    name={goblin.goblinName}
-                    strength={goblin.strength}
-                    storage={goblin.storage}
-                  />
-                </li>
-              ))
-            : 'There are no goblins. So sad. :('}
-        </ul>
+        <GoblinForms goblins={goblins} setGoblins={setGoblins} />
+        {loading ? (
+          <Loading />
+        ) : goblins.length ? (
+          <GoblinList goblins={goblins} setGoblins={setGoblins} />
+        ) : (
+          'No goblins. So sad. :('
+        )}
       </main>
     </>
   );
 };
 
 export default App;
-//

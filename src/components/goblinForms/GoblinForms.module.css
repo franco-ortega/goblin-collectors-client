@@ -1,0 +1,21 @@
+.GoblinForms {
+  background-color: hsl(180, 80%, 75%);
+  border-radius: 0.25rem;
+  max-width: 30rem;
+  margin-block: 1rem;
+  margin-inline: auto;
+  padding: 0.5rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.GoblinForms hr {
+  border-color: hsl(0, 0%, 0%);
+}
+
+@media (min-width: 500px) {
+  .GoblinForms {
+    justify-content: space-evenly;
+  }
+}

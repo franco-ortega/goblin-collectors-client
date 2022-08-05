@@ -8,10 +8,3 @@
 .DeleteGoblin h2 {
   font-size: 1rem;
 }
-
-.DeleteGoblin button {
-  background-color: hsl(43, 52%, 33%);
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  color: hsl(72, 100%, 60%);
-}

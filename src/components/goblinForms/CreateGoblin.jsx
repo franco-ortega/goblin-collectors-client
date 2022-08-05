@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getGoblins, createGoblin } from '../../services/request';
+import Button from '../buttons/Button';
 import styles from './CreateGoblin.module.css';
 
 const CreateGoblin = ({ setGoblins }) => {
@@ -81,7 +82,7 @@ const CreateGoblin = ({ setGoblins }) => {
         />
         <label htmlFor='large'>Large</label>
       </fieldset>
-      <button>Create Goblin</button>
+      <Button text='Create Goblin' />
       <p>Click on a goblin to edit it.</p>
     </form>
   );

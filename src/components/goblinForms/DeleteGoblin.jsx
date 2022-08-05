@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { deleteGoblin, getGoblins } from '../../services/request';
+import Button from '../buttons/Button';
 import styles from './DeleteGoblin.module.css';
 
 const DeleteGoblin = ({ goblins, setGoblins }) => {
@@ -30,7 +31,7 @@ const DeleteGoblin = ({ goblins, setGoblins }) => {
           </option>
         ))}
       </select>
-      <button>Delete Goblin</button>
+      <Button text='Delete Goblin' />
 
       {deletedGoblin && <p>{deletedGoblin.goblinName} was deleted.</p>}
     </form>

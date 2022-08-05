@@ -10,7 +10,6 @@ const DeleteGoblin = ({ goblins, setGoblins }) => {
   const onDeleteGoblinSubmit = (e) => {
     e.preventDefault();
     deleteGoblin(goblinToDelete).then((response) => {
-      console.log('RESPONSE: ', response);
       setDeletedGoblin(response);
       getGoblins().then((res) => setGoblins(res));
     });

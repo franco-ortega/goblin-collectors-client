@@ -82,6 +82,7 @@ const CreateGoblin = ({ setGoblins }) => {
         <label htmlFor='large'>Large</label>
       </fieldset>
       <button>Create Goblin</button>
+      <p>Click on a goblin to edit it.</p>
     </form>
   );
 };

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { getGoblins, updateGoblin } from '../../services/request';
 
 const GoblinEdit = ({
-  displayId,
   goblinId,
   name,
   strength,

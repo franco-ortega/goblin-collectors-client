@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import GoblinForm from './components/goblins/GoblinForm';
+import GoblinForm from './components/goblinForms/GoblinForm';
 import GoblinList from './components/goblins/GoblinList';
 import Header from './components/header/Header';
 import Loading from './components/loading/Loading';

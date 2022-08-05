@@ -1,0 +1,27 @@
+.CreateGoblin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.CreateGoblin h2 {
+  font-size: 1rem;
+}
+
+.CreateGoblin fieldset {
+  border: none;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.CreateGoblin fieldset legend {
+  text-decoration: underline;
+}
+
+.CreateGoblin button {
+  background-color: hsl(43, 52%, 33%);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  color: hsl(72, 100%, 60%);
+}

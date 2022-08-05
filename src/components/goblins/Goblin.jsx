@@ -35,7 +35,6 @@ const Goblin = ({
         )
       ) : (
         <GoblinEdit
-          displayId={displayId}
           goblinId={goblinId}
           name={name}
           strength={strength}

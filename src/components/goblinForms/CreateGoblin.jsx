@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  getGoblins,
-  createGoblin,
-  createGoblin2,
-  getGoblins2
-} from '../../services/request';
+import { getGoblins, createGoblin } from '../../services/request';
 import styles from './CreateGoblin.module.css';
 
 const CreateGoblin = ({ setGoblins }) => {
@@ -15,11 +10,11 @@ const CreateGoblin = ({ setGoblins }) => {
   const onCreateGoblinSubmit = (e) => {
     e.preventDefault();
 
-    createGoblin2({
+    createGoblin({
       goblinName: name,
       strength,
       storage
-    }).then(() => getGoblins2().then((res) => setGoblins(res)));
+    }).then(() => getGoblins().then((res) => setGoblins(res)));
 
     setName('');
     setStrength('');

@@ -3,14 +3,14 @@ import GoblinForms from './components/goblinForms/GoblinForms';
 import GoblinList from './components/goblins/GoblinList';
 import Header from './components/header/Header';
 import Loading from './components/loading/Loading';
-import { getGoblins, getGoblins2 } from './services/request';
+import { getGoblins } from './services/request';
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getGoblins2().then((res) => {
+    getGoblins().then((res) => {
       setGoblins(res);
       setLoading(false);
     });

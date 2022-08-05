@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  deleteGoblin,
-  deleteGoblin2,
-  getGoblins,
-  getGoblins2
-} from '../../services/request';
+import { deleteGoblin, getGoblins } from '../../services/request';
 import styles from './DeleteGoblin.module.css';
 
 const DeleteGoblin = ({ goblins, setGoblins }) => {
@@ -13,10 +8,10 @@ const DeleteGoblin = ({ goblins, setGoblins }) => {
 
   const onDeleteGoblinSubmit = (e) => {
     e.preventDefault();
-    deleteGoblin2(goblinToDelete).then((response) => {
+    deleteGoblin(goblinToDelete).then((response) => {
       console.log('RESPONSE: ', response);
       setDeletedGoblin(response);
-      getGoblins2().then((res) => setGoblins(res));
+      getGoblins().then((res) => setGoblins(res));
     });
   };
 

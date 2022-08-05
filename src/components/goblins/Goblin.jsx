@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getGoblins, updateGoblin } from '../../services/request';
+import Updating from '../updating/Updating';
 import styles from './Goblin.module.css';
 
 const Goblin = ({
@@ -15,6 +16,8 @@ const Goblin = ({
   const [updateStrength, setUpdateStrength] = useState(strength);
   const [updateStorage, setUpdateStorage] = useState(storage);
 
+  const [updating, setUpdating] = useState(false);
+
   const onGoblinClick = () => {
     setEdit(true);
   };
@@ -23,25 +26,36 @@ const Goblin = ({
     e.preventDefault();
     console.log('edit submitted');
 
+    setUpdating(true);
+
     updateGoblin(goblinId, {
       goblinName: updateName,
       strength: updateStrength,
       storage: updateStorage
-    }).then(() => getGoblins().then((res) => setGoblins(res)));
+    }).then(() =>
+      getGoblins().then((res) => {
+        setGoblins(res);
+        setUpdating(false);
+      })
+    );
 
     setEdit(false);
   };
 
   return (
     <div className={styles.Goblin} onClick={onGoblinClick}>
-      {!edit ? (
-        <>
-          <h3>
-            #{displayId}: {name}
-          </h3>
-          <p>Strength: {strength}</p>
-          <p>Storage: {storage}</p>
-        </>
+      {!edit || updating ? (
+        updating ? (
+          <Updating />
+        ) : (
+          <>
+            <h3>
+              #{displayId}: {name}
+            </h3>
+            <p>Strength: {strength}</p>
+            <p>Storage: {storage}</p>
+          </>
+        )
       ) : (
         <>
           <form onSubmit={onEditSubmit}>

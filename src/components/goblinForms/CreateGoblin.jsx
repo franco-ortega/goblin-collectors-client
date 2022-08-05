@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { getGoblins, createGoblin } from '../../services/request';
+import { useState } from 'react';
+import { useFetch } from '../../hooks/useFetch';
 import Button from '../buttons/Button';
 import styles from './CreateGoblin.module.css';
 
@@ -7,15 +7,16 @@ const CreateGoblin = ({ setGoblins }) => {
   const [name, setName] = useState('');
   const [strength, setStrength] = useState('');
   const [storage, setStorage] = useState('');
+  const { addGoblin } = useFetch(setGoblins);
 
   const onCreateGoblinSubmit = (e) => {
     e.preventDefault();
 
-    createGoblin({
+    addGoblin({
       goblinName: name,
       strength,
       storage
-    }).then(() => getGoblins().then((res) => setGoblins(res)));
+    });
 
     setName('');
     setStrength('');
@@ -59,7 +60,7 @@ const CreateGoblin = ({ setGoblins }) => {
         <legend>Storage</legend>
         <input
           type='radio'
-          id='storage'
+          id='small'
           name='storage'
           value='small'
           onChange={(e) => setStorage(e.target.value)}
@@ -67,7 +68,7 @@ const CreateGoblin = ({ setGoblins }) => {
         <label htmlFor='small'>Small</label>
         <input
           type='radio'
-          id='storage'
+          id='medium'
           name='storage'
           value='medium'
           onChange={(e) => setStorage(e.target.value)}
@@ -75,7 +76,7 @@ const CreateGoblin = ({ setGoblins }) => {
         <label htmlFor='medium'>Medium</label>
         <input
           type='radio'
-          id='storage'
+          id='large'
           name='storage'
           value='large'
           onChange={(e) => setStorage(e.target.value)}

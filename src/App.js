@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import GoblinForms from './components/goblinForms/GoblinForms';
 import GoblinList from './components/goblins/GoblinList';
 import Header from './components/header/Header';
 import Loading from './components/loading/Loading';
-import { getGoblins } from './services/request';
+import { useFetch } from './hooks/useFetch';
 
 const App = () => {
   const [goblins, setGoblins] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getGoblins().then((res) => {
-      setGoblins(res);
-      setLoading(false);
-    });
-  }, []);
+  const { loading } = useFetch(setGoblins);
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { getGoblins, updateGoblin } from '../../services/request';
 import Updating from '../updating/Updating';
 import styles from './Goblin.module.css';
 import GoblinEdit from './GoblinEdit';

@@ -1,7 +1,15 @@
 import { useState } from 'react';
+import { getGoblins, updateGoblin } from '../../services/request';
 import styles from './Goblin.module.css';
 
-const Goblin = ({ displayId, goblinId, name, strength, storage }) => {
+const Goblin = ({
+  displayId,
+  goblinId,
+  name,
+  strength,
+  storage,
+  setGoblins
+}) => {
   const [edit, setEdit] = useState(false);
   const [updateName, setUpdateName] = useState(name);
   const [updateStrength, setUpdateStrength] = useState(strength);
@@ -14,6 +22,13 @@ const Goblin = ({ displayId, goblinId, name, strength, storage }) => {
   const onEditSubmit = (e) => {
     e.preventDefault();
     console.log('edit submitted');
+
+    updateGoblin(goblinId, {
+      goblinName: updateName,
+      strength: updateStrength,
+      storage: updateStorage
+    }).then(() => getGoblins().then((res) => setGoblins(res)));
+
     setEdit(false);
   };
 

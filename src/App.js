@@ -24,7 +24,7 @@ const App = () => {
         {loading ? (
           <Loading />
         ) : goblins.length ? (
-          <GoblinList goblins={goblins} />
+          <GoblinList goblins={goblins} setGoblins={setGoblins} />
         ) : (
           'No goblins. So sad. :('
         )}

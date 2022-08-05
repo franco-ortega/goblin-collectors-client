@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { getGoblins, createGoblin } from '../../services/request';
 import Button from '../buttons/Button';
 import styles from './CreateGoblin.module.css';
@@ -59,7 +59,7 @@ const CreateGoblin = ({ setGoblins }) => {
         <legend>Storage</legend>
         <input
           type='radio'
-          id='storage'
+          id='small'
           name='storage'
           value='small'
           onChange={(e) => setStorage(e.target.value)}
@@ -67,7 +67,7 @@ const CreateGoblin = ({ setGoblins }) => {
         <label htmlFor='small'>Small</label>
         <input
           type='radio'
-          id='storage'
+          id='medium'
           name='storage'
           value='medium'
           onChange={(e) => setStorage(e.target.value)}
@@ -75,7 +75,7 @@ const CreateGoblin = ({ setGoblins }) => {
         <label htmlFor='medium'>Medium</label>
         <input
           type='radio'
-          id='storage'
+          id='large'
           name='storage'
           value='large'
           onChange={(e) => setStorage(e.target.value)}

@@ -1,0 +1,16 @@
+.UpdateGoblin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.UpdateGoblin fieldset {
+  border: none;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.UpdateGoblin fieldset legend {
+  text-decoration: underline;
+}

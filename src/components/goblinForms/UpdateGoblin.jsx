@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { getGoblins, updateGoblin } from '../../services/request';
+import Button from '../buttons/Button';
+import styles from './UpdateGoblin.module.css';
 
-const GoblinEdit = ({
+const UpdateGoblin = ({
   goblinId,
   name,
   strength,
   storage,
   setGoblins,
-  setEdit,
+  setUpdate,
   setUpdating
 }) => {
   const [updateName, setUpdateName] = useState(name);
@@ -20,22 +22,25 @@ const GoblinEdit = ({
 
     setUpdating(true);
 
-    updateGoblin(goblinId, {
-      goblinName: updateName,
-      strength: updateStrength,
-      storage: updateStorage
-    }).then(() =>
+    updateGoblin(
+      {
+        goblinName: updateName,
+        strength: updateStrength,
+        storage: updateStorage
+      },
+      goblinId
+    ).then(() =>
       getGoblins().then((res) => {
         setGoblins(res);
         setUpdating(false);
       })
     );
 
-    setEdit(false);
+    setUpdate(false);
   };
 
   return (
-    <form onSubmit={onEditSubmit}>
+    <form className={styles.UpdateGoblin} onSubmit={onEditSubmit}>
       <label htmlFor='name'>
         Name:{' '}
         <input
@@ -63,7 +68,7 @@ const GoblinEdit = ({
       </label>
 
       <fieldset form='goblin'>
-        <legend>Storage</legend>
+        <legend>Storage:</legend>
         <input
           type='radio'
           id='storage'
@@ -92,9 +97,9 @@ const GoblinEdit = ({
         />
         <label htmlFor='large'>Large</label>
       </fieldset>
-      <button>Edit Goblin</button>
+      <Button text='Update Goblin' />
     </form>
   );
 };
 
-export default GoblinEdit;
+export default UpdateGoblin;

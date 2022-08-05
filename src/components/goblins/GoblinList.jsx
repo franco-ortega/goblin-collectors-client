@@ -7,7 +7,8 @@ const GoblinList = ({ goblins }) => {
       {goblins.map((goblin, i) => (
         <li key={goblin.goblinId}>
           <Goblin
-            id={i + 1}
+            displayId={i + 1}
+            goblinId={goblin.goblinId}
             name={goblin.goblinName}
             strength={goblin.strength}
             storage={goblin.storage}

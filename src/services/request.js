@@ -20,8 +20,6 @@ const goblinRequest = async (method, data, id = '') => {
       return json;
     });
 
-  console.log(response);
-
   if (method === 'GET') response.sort((a, b) => a.goblinId - b.goblinId);
 
   return response;

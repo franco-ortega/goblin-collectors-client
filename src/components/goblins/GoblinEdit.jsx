@@ -20,11 +20,14 @@ const GoblinEdit = ({
 
     setUpdating(true);
 
-    updateGoblin(goblinId, {
-      goblinName: updateName,
-      strength: updateStrength,
-      storage: updateStorage
-    }).then(() =>
+    updateGoblin(
+      {
+        goblinName: updateName,
+        strength: updateStrength,
+        storage: updateStorage
+      },
+      goblinId
+    ).then(() =>
       getGoblins().then((res) => {
         setGoblins(res);
         setUpdating(false);

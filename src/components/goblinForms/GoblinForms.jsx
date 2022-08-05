@@ -1,10 +1,10 @@
 import CreateGoblin from './CreateGoblin';
 import DeleteGoblin from './DeleteGoblin';
-import styles from './GoblinForm.module.css';
+import styles from './GoblinForms.module.css';
 
-const GoblinForm = ({ goblins, setGoblins }) => {
+const GoblinForms = ({ goblins, setGoblins }) => {
   return (
-    <section className={styles.GoblinForm}>
+    <section className={styles.GoblinForms}>
       <CreateGoblin setGoblins={setGoblins} />
       <hr />
       <DeleteGoblin goblins={goblins} setGoblins={setGoblins} />
@@ -12,4 +12,4 @@ const GoblinForm = ({ goblins, setGoblins }) => {
   );
 };
 
-export default GoblinForm;
+export default GoblinForms;

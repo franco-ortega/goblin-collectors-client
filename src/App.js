@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import GoblinForm from './components/goblinForms/GoblinForm';
+import GoblinForms from './components/goblinForms/GoblinForms';
 import GoblinList from './components/goblins/GoblinList';
 import Header from './components/header/Header';
 import Loading from './components/loading/Loading';
@@ -20,7 +20,7 @@ const App = () => {
     <>
       <Header />
       <main>
-        <GoblinForm goblins={goblins} setGoblins={setGoblins} />
+        <GoblinForms goblins={goblins} setGoblins={setGoblins} />
         {loading ? (
           <Loading />
         ) : goblins.length ? (

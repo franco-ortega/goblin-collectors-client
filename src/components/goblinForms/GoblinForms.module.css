@@ -1,4 +1,4 @@
-.GoblinForm {
+.GoblinForms {
   background-color: hsl(180, 80%, 75%);
   border-radius: 0.25rem;
   max-width: 30rem;
@@ -10,12 +10,12 @@
   justify-content: space-between;
 }
 
-.GoblinForm hr {
+.GoblinForms hr {
   border-color: hsl(0, 0%, 0%);
 }
 
 @media (min-width: 500px) {
-  .GoblinForm {
+  .GoblinForms {
     justify-content: space-evenly;
   }
 }

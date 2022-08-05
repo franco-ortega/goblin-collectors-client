@@ -1,7 +1,9 @@
 const { REACT_APP_API_URL } = process.env;
 
 export const getGoblins = async () => {
-  return await fetch(REACT_APP_API_URL).then((res) => res.json());
+  return await fetch(REACT_APP_API_URL)
+    .then((res) => res.json())
+    .then((res) => res.sort((a, b) => a.goblinId - b.goblinId));
 };
 
 export const postGoblin = async (data) => {

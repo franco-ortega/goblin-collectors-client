@@ -13,12 +13,12 @@ const goblinRequest = async (method, data, id = '') => {
     method,
     headers,
     body: JSON.stringify(data)
-  })
-    .then((res) => Promise.all([res.ok, res.json()]))
-    .then(([ok, json]) => {
-      if (!ok) throw json;
-      return json;
-    });
+  }).then((res) => res.json());
+  // .then((res) => Promise.all([res.ok, res.json()]))
+  // .then(([ok, json]) => {
+  //   if (!ok) throw json;
+  //   return json;
+  // });
 
   if (method === 'GET') response.sort((a, b) => a.goblinId - b.goblinId);
 

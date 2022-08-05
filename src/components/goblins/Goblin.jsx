@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import UpdateGoblin from '../goblinForms/UpdateGoblin';
 import Updating from '../updating/Updating';
 import styles from './Goblin.module.css';
-import GoblinEdit from './GoblinEdit';
 
 const Goblin = ({
   displayId,
@@ -11,17 +11,17 @@ const Goblin = ({
   storage,
   setGoblins
 }) => {
-  const [edit, setEdit] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   const [updating, setUpdating] = useState(false);
 
   const onGoblinClick = () => {
-    setEdit(true);
+    setUpdate(true);
   };
 
   return (
     <div className={styles.Goblin} onClick={onGoblinClick}>
-      {!edit || updating ? (
+      {!update || updating ? (
         updating ? (
           <Updating />
         ) : (
@@ -34,13 +34,13 @@ const Goblin = ({
           </>
         )
       ) : (
-        <GoblinEdit
+        <UpdateGoblin
           goblinId={goblinId}
           name={name}
           strength={strength}
           storage={storage}
           setGoblins={setGoblins}
-          setEdit={setEdit}
+          setUpdate={setUpdate}
           setUpdating={setUpdating}
         />
       )}

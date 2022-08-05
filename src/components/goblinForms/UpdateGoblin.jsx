@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { getGoblins, updateGoblin } from '../../services/request';
+import styles from './UpdateGoblin.module.css';
 
-const GoblinEdit = ({
+const UpdateGoblin = ({
   goblinId,
   name,
   strength,
   storage,
   setGoblins,
-  setEdit,
+  setUpdate,
   setUpdating
 }) => {
   const [updateName, setUpdateName] = useState(name);
@@ -34,11 +35,11 @@ const GoblinEdit = ({
       })
     );
 
-    setEdit(false);
+    setUpdate(false);
   };
 
   return (
-    <form onSubmit={onEditSubmit}>
+    <form className={styles.UpdateGoblin} onSubmit={onEditSubmit}>
       <label htmlFor='name'>
         Name:{' '}
         <input
@@ -66,7 +67,7 @@ const GoblinEdit = ({
       </label>
 
       <fieldset form='goblin'>
-        <legend>Storage</legend>
+        <legend>Storage:</legend>
         <input
           type='radio'
           id='storage'
@@ -95,9 +96,9 @@ const GoblinEdit = ({
         />
         <label htmlFor='large'>Large</label>
       </fieldset>
-      <button>Edit Goblin</button>
+      <button>Update Goblin</button>
     </form>
   );
 };
 
-export default GoblinEdit;
+export default UpdateGoblin;

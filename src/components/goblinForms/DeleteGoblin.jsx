@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { deleteGoblin, getGoblins } from '../../services/request';
+import { useFetch } from '../../hooks/useFetch';
 import Button from '../buttons/Button';
 import styles from './DeleteGoblin.module.css';
 
 const DeleteGoblin = ({ goblins, setGoblins }) => {
   const [goblinToDelete, setGoblinToDelete] = useState('');
   const [deletedGoblin, setDeletedGoblin] = useState(null);
+  const { removeGoblin } = useFetch(setGoblins);
 
   const onDeleteGoblinSubmit = (e) => {
     e.preventDefault();
-    deleteGoblin(goblinToDelete).then((response) => {
-      setDeletedGoblin(response);
-      getGoblins().then((res) => setGoblins(res));
-    });
+    removeGoblin(goblinToDelete, setDeletedGoblin);
   };
 
   return (

@@ -1,24 +1,34 @@
 import { useEffect, useState } from 'react';
-import { getGoblins } from '../services/request';
+import { createGoblin, deleteGoblin, getGoblins } from '../services/request';
 
-export const useFetch = () => {
-  console.log('fetching...');
-
-  const [goblins, setGoblins] = useState([]);
+export const useFetch = (setState) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     getGoblins().then((res) => {
-      setGoblins(res);
+      setState(res);
       setLoading(false);
     });
-  }, []);
+  }, [setState]);
+
+  const addGoblin = async (data) => {
+    await createGoblin(data).then(() => {
+      getGoblins().then((res) => setState(res));
+    });
+  };
+
+  const removeGoblin = (id, setDelete) => {
+    deleteGoblin(id).then((response) => {
+      setDelete(response);
+      getGoblins().then((res) => setState(res));
+    });
+  };
 
   return {
-    goblins,
-    setGoblins,
     loading,
-    setLoading
+    setLoading,
+    addGoblin,
+    removeGoblin
   };
 };

@@ -1,5 +1,9 @@
 .Updating {
-  width: fit-content;
-  margin: auto;
+  background-color: hsl(120, 73%, 75%);
+  border: 0.5rem solid hsl(120, 100%, 25%);
+  border-radius: 0.25rem;
+  width: 15rem;
+  padding: 0.25rem;
+  font-size: 1rem;
   text-align: center;
 }

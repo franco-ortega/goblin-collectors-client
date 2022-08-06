@@ -4,8 +4,9 @@
   border-radius: 0.25rem;
   width: 15rem;
   padding: 0.25rem;
-  text-align: left;
+  color: black;
   font-size: 1rem;
+  text-align: left;
 }
 
 .Goblin h3 {

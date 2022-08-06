@@ -4,4 +4,10 @@
   border-radius: 0.25rem;
   width: 15rem;
   padding: 0.25rem;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.Goblin h3 {
+  font-size: 1.2rem;
 }

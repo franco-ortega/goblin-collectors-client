@@ -19,7 +19,7 @@ const Goblin = ({
   };
 
   return (
-    <div className={styles.Goblin} onClick={onGoblinClick}>
+    <button className={styles.Goblin} onClick={onGoblinClick}>
       {!update || updating ? (
         updating ? (
           <Updating />
@@ -43,7 +43,7 @@ const Goblin = ({
           setUpdating={setUpdating}
         />
       )}
-    </div>
+    </button>
   );
 };
 

@@ -1,4 +1,4 @@
-import Goblin from './Goblin';
+import GoblinContainer from './GoblinContainer';
 import styles from './GoblinList.module.css';
 
 const GoblinList = ({ goblins, setGoblins }) => {
@@ -6,7 +6,7 @@ const GoblinList = ({ goblins, setGoblins }) => {
     <ul className={styles.GoblinList}>
       {goblins.map((goblin, i) => (
         <li key={goblin.goblinId}>
-          <Goblin
+          <GoblinContainer
             displayId={i + 1}
             goblinId={goblin.goblinId}
             name={goblin.goblinName}

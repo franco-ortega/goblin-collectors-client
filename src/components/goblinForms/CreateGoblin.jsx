@@ -58,36 +58,30 @@ const CreateGoblin = ({ setGoblins }) => {
       </label>
       <fieldset form='goblin'>
         <legend>Storage</legend>
-        <label htmlFor='small'>
-          <input
-            type='radio'
-            id='small'
-            name='storage'
-            value='small'
-            onChange={(e) => setStorage(e.target.value)}
-          />
-          Small
-        </label>
-        <label htmlFor='medium'>
-          <input
-            type='radio'
-            id='medium'
-            name='storage'
-            value='medium'
-            onChange={(e) => setStorage(e.target.value)}
-          />
-          Medium
-        </label>
-        <label htmlFor='large'>
-          <input
-            type='radio'
-            id='large'
-            name='storage'
-            value='large'
-            onChange={(e) => setStorage(e.target.value)}
-          />
-          Large
-        </label>
+        <input
+          type='radio'
+          id='small'
+          name='storage'
+          value='small'
+          onChange={(e) => setStorage(e.target.value)}
+        />
+        <label htmlFor='small'>Small</label>
+        <input
+          type='radio'
+          id='medium'
+          name='storage'
+          value='medium'
+          onChange={(e) => setStorage(e.target.value)}
+        />
+        <label htmlFor='medium'>Medium</label>
+        <input
+          type='radio'
+          id='large'
+          name='storage'
+          value='large'
+          onChange={(e) => setStorage(e.target.value)}
+        />
+        <label htmlFor='large'>Large</label>
       </fieldset>
       <Button text='Create Goblin' />
       <p>Click on a goblin to edit it.</p>

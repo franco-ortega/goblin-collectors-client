@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
-import { getGoblins, updateGoblin } from '../../services/request';
 import Button from '../buttons/Button';
 import styles from './UpdateGoblin.module.css';
 

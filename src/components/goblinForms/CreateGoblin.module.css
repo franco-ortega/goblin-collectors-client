@@ -18,3 +18,7 @@
 .CreateGoblin fieldset legend {
   text-decoration: underline;
 }
+
+.CreateGoblin input[type='radio'] {
+  margin-right: 0.15rem;
+}

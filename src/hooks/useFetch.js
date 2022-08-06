@@ -29,8 +29,8 @@ export const useFetch = (setState) => {
     });
   };
 
-  const removeGoblin = (id, setDelete) => {
-    deleteGoblin(id).then((response) => {
+  const removeGoblin = async (id, setDelete) => {
+    await deleteGoblin(id).then((response) => {
       setDelete(response);
       getGoblins().then((res) => setState(res));
     });

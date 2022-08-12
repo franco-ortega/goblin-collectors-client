@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
+import { useRequest } from '../../hooks/useRequest';
 import Button from '../buttons/Button';
 import styles from './CreateGoblin.module.css';
 
@@ -7,7 +7,7 @@ const CreateGoblin = ({ setGoblins }) => {
   const [name, setName] = useState('');
   const [strength, setStrength] = useState('');
   const [storage, setStorage] = useState('');
-  const { addGoblin } = useFetch(setGoblins);
+  const { addGoblin } = useRequest(setGoblins);
 
   const onCreateGoblinSubmit = (e) => {
     e.preventDefault();

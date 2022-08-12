@@ -6,33 +6,34 @@ import {
   updateGoblin
 } from '../services/request';
 
-export const useFetch = (setState) => {
+export const useRequest = (setState) => {
   const [loading, setLoading] = useState(false);
+  const goblinPath = '/api/v1/goblins';
 
   useEffect(() => {
     setLoading(true);
-    getGoblins().then((res) => {
+    getGoblins(goblinPath).then((res) => {
       setState(res);
       setLoading(false);
     });
   }, [setState]);
 
   const addGoblin = async (data) => {
-    await createGoblin(data).then(() => {
-      getGoblins().then((res) => setState(res));
+    await createGoblin(goblinPath, data).then(() => {
+      getGoblins(goblinPath).then((res) => setState(res));
     });
   };
 
-  const editGoblin = async (data, id) => {
-    await updateGoblin(data, id).then(() => {
-      getGoblins().then((res) => setState(res));
+  const editGoblin = async (id, data) => {
+    await updateGoblin(`${goblinPath}/${id}`, data).then(() => {
+      getGoblins(goblinPath).then((res) => setState(res));
     });
   };
 
   const removeGoblin = async (id, setDelete) => {
-    await deleteGoblin(id).then((response) => {
+    await deleteGoblin(`${goblinPath}/${id}`).then((response) => {
       setDelete(response);
-      getGoblins().then((res) => setState(res));
+      getGoblins(goblinPath).then((res) => setState(res));
     });
   };
 

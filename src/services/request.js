@@ -2,14 +2,14 @@ const { REACT_APP_API_URL } = process.env;
 
 const WITHOUT_BODY_METHODS = ['GET', 'DELETE'];
 
-const goblinRequest = async (method, data, id = '') => {
+const goblinRequest = async (method, path, data) => {
   const headers = WITHOUT_BODY_METHODS.includes(method)
     ? {}
     : {
         'Content-Type': 'application/json'
       };
 
-  const response = await fetch(`${REACT_APP_API_URL}/${id}`, {
+  const response = await fetch(`${REACT_APP_API_URL}${path}`, {
     method,
     headers,
     body: JSON.stringify(data)
@@ -25,7 +25,7 @@ const goblinRequest = async (method, data, id = '') => {
   return response;
 };
 
-export const getGoblins = () => goblinRequest('GET');
-export const createGoblin = (data) => goblinRequest('POST', data);
-export const updateGoblin = (data, id) => goblinRequest('PUT', data, id);
-export const deleteGoblin = (id) => goblinRequest('DELETE', null, id);
+export const getGoblins = (path) => goblinRequest('GET', path);
+export const createGoblin = (path, data) => goblinRequest('POST', path, data);
+export const updateGoblin = (path, data) => goblinRequest('PUT', path, data);
+export const deleteGoblin = (path, data) => goblinRequest('DELETE', path, data);

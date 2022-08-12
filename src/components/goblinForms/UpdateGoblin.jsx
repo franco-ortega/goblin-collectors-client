@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
+import { useRequest } from '../../hooks/useRequest';
 import Button from '../buttons/Button';
 import styles from './UpdateGoblin.module.css';
 
@@ -15,7 +15,7 @@ const UpdateGoblin = ({
   const [updateName, setUpdateName] = useState(name);
   const [updateStrength, setUpdateStrength] = useState(strength);
   const [updateStorage, setUpdateStorage] = useState(storage);
-  const { editGoblin } = useFetch(setGoblins);
+  const { editGoblin } = useRequest(setGoblins);
 
   const onEditSubmit = async (e) => {
     e.preventDefault();
@@ -23,14 +23,11 @@ const UpdateGoblin = ({
 
     setUpdating(true);
 
-    await editGoblin(
-      {
-        goblinName: updateName,
-        strength: updateStrength,
-        storage: updateStorage
-      },
-      goblinId
-    );
+    await editGoblin(goblinId, {
+      goblinName: updateName,
+      strength: updateStrength,
+      storage: updateStorage
+    });
 
     setUpdate(false);
     setUpdating(false);

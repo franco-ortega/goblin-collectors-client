@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
+import { useRequest } from '../../hooks/useRequest';
 import Button from '../buttons/Button';
 import styles from './DeleteGoblin.module.css';
 
 const DeleteGoblin = ({ goblins, setGoblins }) => {
   const [goblinToDelete, setGoblinToDelete] = useState('');
   const [deletedGoblin, setDeletedGoblin] = useState(null);
-  const { removeGoblin } = useFetch(setGoblins);
+  const { removeGoblin } = useRequest(setGoblins);
 
   const onDeleteGoblinSubmit = (e) => {
     e.preventDefault();

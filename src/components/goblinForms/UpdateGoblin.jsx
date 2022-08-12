@@ -19,18 +19,16 @@ const UpdateGoblin = ({
 
   const onEditSubmit = async (e) => {
     e.preventDefault();
-    console.log('edit submitted');
 
     setUpdating(true);
 
-    await editGoblin(goblinId, {
+    await editGoblin(setUpdating, goblinId, {
       goblinName: updateName,
       strength: updateStrength,
       storage: updateStorage
     });
 
-    setUpdate(false);
-    setUpdating(false);
+    await setUpdate(false);
   };
 
   return (

@@ -24,9 +24,12 @@ export const useRequest = (setState) => {
     });
   };
 
-  const editGoblin = async (id, data) => {
+  const editGoblin = async (setEdit, id, data) => {
     await updateGoblin(`${goblinPath}/${id}`, data).then(() => {
-      getGoblins(goblinPath).then((res) => setState(res));
+      getGoblins(goblinPath).then(async (res) => {
+        await setState(res);
+        await setEdit(false);
+      });
     });
   };
 

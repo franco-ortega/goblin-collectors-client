@@ -23,14 +23,11 @@ const UpdateGoblin = ({
 
     setUpdating(true);
 
-    await editGoblin(
-      {
-        goblinName: updateName,
-        strength: updateStrength,
-        storage: updateStorage
-      },
-      goblinId
-    );
+    await editGoblin(goblinId, {
+      goblinName: updateName,
+      strength: updateStrength,
+      storage: updateStorage
+    });
 
     setUpdate(false);
     setUpdating(false);

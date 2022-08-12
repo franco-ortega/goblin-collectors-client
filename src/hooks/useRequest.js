@@ -6,7 +6,7 @@ import {
   updateGoblin
 } from '../services/request';
 
-export const useFetch = (setState) => {
+export const useRequest = (setState) => {
   const [loading, setLoading] = useState(false);
   const goblinPath = '/api/v1/goblins';
 
